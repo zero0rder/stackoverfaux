@@ -1,9 +1,9 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store";
-import Comments from "../components/shared/comments";
-import Answers from "../components/shared/answers";
+import Comments from "../components/comments/comments";
+import Answers from "../components/answers/answers";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -36,7 +36,9 @@ const QuestionDetail: React.FC<QuestionDetailProps> = ({}) => {
           dangerouslySetInnerHTML={{ __html: currentQuestion.body }}
         />
         <Typography sx={{ textAlign: "right", margin: "1rem 0" }}>
-          user: {currentQuestion.user.name}
+          <Link to={`/users/${currentQuestion.user.id}`}>
+            user: {currentQuestion.user.name}
+          </Link>
         </Typography>
       </Grid>
       <Comments data={currentQuestion?.comments} questionId={questionId} />

@@ -1,6 +1,6 @@
 import React from "react";
-import Questions from "../components/question/questions";
-import QuestionForm from "../components/question/questionForm";
+import Questions from "../components/questions/questions";
+import QuestionForm from "../components/questions/questionForm";
 import Grid from "@mui/material/Grid";
 interface DashboardProps {}
 /**

@@ -38,7 +38,7 @@ const UserDetail: React.FC<UserDetailProps> = ({}) => {
   return (
     <Box>
       <Typography variant="h2" textAlign={"center"} padding={"1rem 0"}>
-        {user.name}
+        {user?.name}
       </Typography>
       <Divider />
       <Grid container margin={"2rem 0"} display={"flex"}>
@@ -52,7 +52,7 @@ const UserDetail: React.FC<UserDetailProps> = ({}) => {
             margin={"0 1rem"}
             rowGap={"1rem"}
           >
-            {userQuestions.map((q) => (
+            {userQuestions?.map((q) => (
               <React.Fragment key={q.id}>
                 <Paper sx={{ padding: "1rem" }}>
                   <Link to={`/questions/${q.id}`}>{q.title}</Link>
@@ -66,7 +66,7 @@ const UserDetail: React.FC<UserDetailProps> = ({}) => {
             All Answers
           </Typography>
           <Grid display={"flex"} flexDirection={"column"} rowGap={"1rem"}>
-            {userAnswers.map((q) => (
+            {userAnswers?.map((q) => (
               <React.Fragment key={q.id}>
                 <Paper sx={{ padding: "1rem" }}>
                   <Typography

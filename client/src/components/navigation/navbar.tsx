@@ -15,11 +15,11 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import MobileMenu from "../shared/mobileMenu";
+import MobileMenu from "./mobileMenu";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/base/FormControl";
 import useLocalStorage from "../../hooks/useLocalStorage";
-// import { v4 as uuidv4 } from "uuid";
+import UserButton from "./userButton";
 
 interface NavbarProps {}
 
@@ -72,8 +72,8 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
   };
 
   const handleSubmit = () => {
-    // let shortenedId = uuidv4().slice(0, 13);
-    const user = { id: 7654, name: formState };
+    const uuid = Math.abs(~~(Math.random() * ~~(Math.random() * Date.now())));
+    const user = { id: uuid, name: formState };
     dispatch(createUser(user));
     dispatch(addToUsers(user));
     setLocalUser(user);
@@ -107,19 +107,9 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
             />
           )}
           {userExists ? (
-            <Button
-              onClick={() => handleDelete()}
-              sx={{ backgroundColor: "#add8e6", margin: "0.5rem 0.5rem 1rem" }}
-            >
-              Delete User
-            </Button>
+            <UserButton cb={handleDelete}>Delete User</UserButton>
           ) : (
-            <Button
-              onClick={() => handleSubmit()}
-              sx={{ backgroundColor: "#add8e6", margin: "0.5rem 0.5rem 1rem" }}
-            >
-              Create User
-            </Button>
+            <UserButton cb={handleSubmit}>Create User</UserButton>
           )}
         </FormControl>
         <ButtonGroup sx={headerStyles.buttonGroupMobile}>

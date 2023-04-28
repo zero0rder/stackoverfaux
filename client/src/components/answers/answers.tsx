@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import type { RootState } from "../../store";
 import { AnswerType, addAnswer } from "../../reducers/questions/questionsSlice";
-import Comments from "./comments";
+import Comments from "../comments/comments";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
@@ -53,7 +54,7 @@ const Answers: React.FC<AnswersProps> = ({ data, parent }) => {
               <Typography>score {a.score}</Typography>
               {a.accepted ? <Typography>Accepted Answer!</Typography> : null}
               <Typography sx={{ textAlign: "right", margin: "1rem 0" }}>
-                user: {a.user.name}
+                <Link to={`/users/${a.user.id}`}>user: {a.user.name}</Link>
               </Typography>
             </div>
             {/* COMMENTS */}

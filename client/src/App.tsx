@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import Navbar from "./components/layout/navbar";
+import Navbar from "./components/navigation/navbar";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import "./App.css";
