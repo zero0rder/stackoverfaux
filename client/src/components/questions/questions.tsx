@@ -9,7 +9,9 @@ import Grid from "@mui/material/Grid";
 interface QuestionsProps {}
 
 const Questions: React.FC<QuestionsProps> = ({}) => {
-  const questionData = useSelector((state: RootState) => state.questions);
+  const questionData = useSelector((state: RootState) =>
+    state.questions.slice().sort((a, b) => b.creation - a.creation)
+  );
   return (
     <Grid sx={{ maxWidth: "850px", margin: "0 auto" }}>
       <List style={{ display: "flex", flexDirection: "column" }}>

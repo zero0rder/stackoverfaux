@@ -15,12 +15,34 @@ interface QuestionRowProps {
 const QuestionRow: React.FC<QuestionRowProps> = ({ data }) => (
   <>
     <ListItem alignItems="flex-start">
-      <ListItemAvatar>
+      <ListItemAvatar
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "15%",
+        }}
+      >
         <Avatar alt="Remy Sharp" />
+        <Link to={`/users/${data.user.id}`} style={{ color: "#1976d2" }}>
+          <Typography
+            fontSize={"0.85rem"}
+            padding={"0.25rem"}
+            fontWeight={"bold"}
+            textAlign={"center"}
+            sx={{ wordBreak: "break-word" }}
+          >
+            {data.user.name}
+          </Typography>
+        </Link>
+        <Typography fontSize={"0.75rem"} padding={"0.25rem"} fontWeight={"500"}>
+          {new Date(data.creation).toLocaleDateString()}
+        </Typography>
       </ListItemAvatar>
       <ListItemText
+        sx={{ padding: "0 1rem" }}
         primary={
-          <Link to={`/questions/${data.id}`}>
+          <Link to={`/questions/${data.id}`} style={{ color: "#1976d2" }}>
             <Typography
               sx={{
                 "& .MuiTypography-root": {

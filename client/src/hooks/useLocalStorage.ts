@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import type { UserType } from '../reducers/users/userSlice'
-
 
 /**
  *      Persist user data on client. Used to manage User related State/UI updates.
@@ -8,14 +6,13 @@ import type { UserType } from '../reducers/users/userSlice'
  * 
  */
 
-
-export type LocalStorageType = {
-    data: UserType;
-    update: (value: UserType) => void;
+export type LocalStorageType<T> = {
+    data: T | undefined;
+    update: (value: T) => void;
     delete: (str: string) => void;
 }
 
-const handleStorage = (key:string, value:UserType|undefined) => {
+const handleStorage = (key:string, value:unknown) => {
     if(typeof window === 'undefined')
         return value
 
@@ -29,13 +26,13 @@ const handleStorage = (key:string, value:UserType|undefined) => {
     }
 }
 
-const useLocalStorage = (key:string, val?:UserType) => {
-    const [ storedValue, setStoredValue ] = useState<UserType>(() => handleStorage(key, val))
+const useLocalStorage = <T>(key:string, val?:T) => {
+    const [ storedValue, setStoredValue ] = useState<T|undefined>(() => handleStorage(key, val))
 
-    const setValue = (value:UserType):void => {
+    const setValue = (args: T):void => {
         try{
-            const valueToStore = value instanceof Function ? value(storedValue) : value
-            setStoredValue(valueToStore)
+            const valueToStore = args instanceof Function ? args(storedValue) : args
+            setStoredValue(args)
 
             if(typeof window !== 'undefined')
                 localStorage.setItem(key, JSON.stringify(valueToStore))
@@ -48,7 +45,7 @@ const useLocalStorage = (key:string, val?:UserType) => {
     const removeKey = (key:string):void => {
         if(localStorage.getItem(key)){
             localStorage.removeItem(key)
-            setStoredValue({id:0,name:''})
+            setStoredValue(undefined)
         }
     }
 

@@ -31,11 +31,11 @@ const CardItem: React.FC<CardItemProps> = ({ data }) => (
   <Grid item xs={12} sm={6} md={4}>
     <Card raised sx={cardStyles.cardWrap}>
       <Avatar
-        alt=""
+        alt={data.name}
         src=""
         sx={{ width: 45, height: 45, marginRight: "1rem" }}
       />
-      <Link key={data.id} to={`/users/${data.id}`}>
+      <Link key={data.id} to={`/users/${data.id}`} style={{ color: "#1976d2" }}>
         <CardHeader sx={cardStyles.header} title={data.name} />
       </Link>
     </Card>

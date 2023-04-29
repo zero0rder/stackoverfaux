@@ -23,6 +23,14 @@ const QuestionDetail: React.FC<QuestionDetailProps> = ({}) => {
       <Grid>
         <Typography variant="h3">{currentQuestion.title}</Typography>
         <Typography
+          padding={"0.5rem 0"}
+          fontSize={"0.85rem"}
+          color={"#1976d2"}
+          fontWeight={"bold"}
+        >
+          Asked on {new Date(currentQuestion.creation).toLocaleDateString()}
+        </Typography>
+        <Typography
           sx={{
             "& pre": {
               backgroundColor: "linen",

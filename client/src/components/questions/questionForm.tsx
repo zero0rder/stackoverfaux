@@ -18,6 +18,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({}) => {
     title: "",
     body: "",
   });
+
   const userObj = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
@@ -26,14 +27,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({}) => {
   };
 
   const handleOnSubmit = () => {
-    dispatch(
-      addQuestion({
-        title: formState.title,
-        body: formState.body,
-        user: userObj,
-      })
-    );
-
+    dispatch(addQuestion(formState.title, formState.body, userObj));
     setFormState({ title: "", body: "" });
   };
 

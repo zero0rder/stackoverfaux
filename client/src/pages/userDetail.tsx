@@ -20,6 +20,11 @@ const UserDetail: React.FC<UserDetailProps> = ({}) => {
   const userQuestions = useSelector((state: RootState) =>
     state.questions.filter((q) => q.user.id == parseInt(userId))
   );
+
+  /**
+   *  In a production env 'answers' state would be sliced/isolated
+   *  similar to 'questions' state above
+   */
   const userAnswers = useSelector((state: RootState) => {
     let answers: AnswerType[] = [];
     for (let q of state.questions) {

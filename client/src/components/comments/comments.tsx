@@ -36,15 +36,7 @@ const Comments: React.FC<CommentsProps> = ({ data, questionId, ansId }) => {
   };
 
   const handleOnSubmit = () => {
-    dispatch(
-      addComment({
-        body: formState,
-        questionId: questionId,
-        ansId: ansId,
-        user: userObj,
-      })
-    );
-
+    dispatch(addComment(questionId, formState, userObj, ansId));
     setFormState("");
   };
 

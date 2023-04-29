@@ -37,3 +37,6 @@ export function formatUsers(A: QuestionType[]){
 function filterUsers(A: UserType[]){
     return A.filter((obj, i) => A.findIndex((j) => j.id === obj.id) === i)
 }
+
+// Generate Random ID
+export const generateRandomId = () => Math.abs(~~(Math.random() * ~~(Math.random() * Date.now())));

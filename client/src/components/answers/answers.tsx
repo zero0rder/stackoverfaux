@@ -31,7 +31,7 @@ const Answers: React.FC<AnswersProps> = ({ data, parent }) => {
   };
 
   const handleOnSubmit = () => {
-    dispatch(addAnswer({ body: formState, questionId: parent, user: userObj }));
+    dispatch(addAnswer(parent, formState, userObj));
     setFormState("");
   };
 
