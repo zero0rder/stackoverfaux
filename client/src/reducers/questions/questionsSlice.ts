@@ -23,11 +23,6 @@ const initialState: RequestStatusType<QuestionType[]> = {
     error: undefined
 }
 
-/**
- *  In a production setting "Questions", "Answers" and "Comments"
- *  would have their own separate "Slices" in respective folders
- */
-
 export const questionSlice = createSlice({
     name: 'questions',
     initialState,

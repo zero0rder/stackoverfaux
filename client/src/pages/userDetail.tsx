@@ -15,19 +15,20 @@ const UserDetail: React.FC<UserDetailProps> = ({}) => {
   const { pathname } = useLocation();
   const userId = pathname.replace("/users/", "");
 
+  // Would fetch user via HTTP request
   const user = useSelector(
     (state: RootState) =>
       state.users.data.filter((u) => u.id == parseInt(userId))[0]
   );
 
+  //Ideally, questions state wouldn't be global. You'd simply
+  //make an HTTP request for the questions data related to the user.
   const userQuestions = useSelector((state: RootState) =>
     state.questions.data.filter((q) => q.user.id == parseInt(userId))
   );
 
-  /**
-   *  In a production env 'answers' state would be sliced/isolated
-   *  similar to 'questions' state above
-   */
+  //Ideally, answers state wouldn't be global. You'd simply
+  //make an HTTP request for the answers data related to the user.
   const userAnswers = useSelector((state: RootState) => {
     let answers: AnswerType[] = [];
     for (let q of state.questions.data) {

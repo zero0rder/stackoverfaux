@@ -10,7 +10,7 @@ interface QuestionsProps {}
 
 const Questions: React.FC<QuestionsProps> = ({}) => {
   /**
-   *  Would fetch questions on-demand (cached) instead of
+   *  Would fetch questions data on-demand instead of
    *  on startup depending on application requirements
    */
   const questionData = useSelector(selectAllQuestions);

@@ -30,7 +30,7 @@ const UserForm: React.FC<UserFormProps> = ({}) => {
    * Todo: consistent data
    *  If localUser is saved in LocalStorage make sure
    *  the global redux "user" state object matches value
-   *  on page reload
+   *  on page reload (Batch or Debounce events)
    */
   //   if (localUser !== undefined) {
   //     dispatch(createUser(localUser.id, localUser.name));

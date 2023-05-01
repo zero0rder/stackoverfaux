@@ -13,7 +13,7 @@ const QuestionDetail: React.FC<QuestionDetailProps> = ({}) => {
   const { pathname } = useLocation();
   const questionId = parseInt(pathname.replace("/questions/", ""));
   /**
-   *  Would fetch questions on-demand (cached) instead of
+   *  Would fetch question data on-demand instead of
    *  on app startup depending on application requirements
    */
   const currentQuestion = useSelector(

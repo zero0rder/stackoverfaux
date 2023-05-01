@@ -18,6 +18,8 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async() => {
 })
 
 // Create a piece of redux state called 'users
+// In Production setting, users would not be held
+// in global state depending on requirements
 export const usersSlice = createSlice({
     name: 'users',
     initialState,

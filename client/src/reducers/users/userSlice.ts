@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { UserType } from '../../utils/types/shared'
 /**
  *  User data (session data) populated into initalState variable.
- *  In production setting this could be handled server side
+ *  In production setting this could be handled server side (passport.js, etc..)
  */
 const initialState: UserType = { id: 0, name: ''}
 
