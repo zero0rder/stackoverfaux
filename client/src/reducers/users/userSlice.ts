@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-
-export type UserType = {
-    id: number;
-    name: string;
-};
-
+import { UserType } from '../../utils/types/shared'
+/**
+ *  User data (session data) populated into initalState variable.
+ *  In production setting this could be handled server side
+ */
 const initialState: UserType = { id: 0, name: ''}
 
 export const userSlice = createSlice({

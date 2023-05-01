@@ -1,4 +1,4 @@
-export const questions_db = [
+export const seedQuestions = [
     {
       "id": 68462879,
       "title": "How to force a compile error in C++(17) if a function return value isn&#39;t checked? Ideally through the type system",

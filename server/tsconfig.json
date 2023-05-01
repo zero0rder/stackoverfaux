@@ -10,7 +10,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,

@@ -1,17 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import QuestionRow from "./questionRow";
-import type { RootState } from "../../store";
-import type { QuestionType } from "../../reducers/questions/questionsSlice";
+import type { QuestionType } from "../../utils/types/shared";
+import { selectAllQuestions } from "../../reducers/questions/questionsSlice";
 import List from "@mui/material/List";
 import Grid from "@mui/material/Grid";
 
 interface QuestionsProps {}
 
 const Questions: React.FC<QuestionsProps> = ({}) => {
-  const questionData = useSelector((state: RootState) =>
-    state.questions.slice().sort((a, b) => b.creation - a.creation)
-  );
+  /**
+   *  Would fetch questions on-demand (cached) instead of
+   *  on startup depending on application requirements
+   */
+  const questionData = useSelector(selectAllQuestions);
   return (
     <Grid sx={{ maxWidth: "850px", margin: "0 auto" }}>
       <List style={{ display: "flex", flexDirection: "column" }}>

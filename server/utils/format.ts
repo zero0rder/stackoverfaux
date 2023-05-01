@@ -1,4 +1,35 @@
-import type { UserType, QuestionType } from './types/shared'
+export type UserType = {
+    id: number;
+    name: string;
+};
+
+// Questions, Answers, Comment Types
+export type AnswerType = {
+    id: number;
+    body: string;
+    creation: number;
+    score: number;
+    user: UserType;
+    accepted: boolean;
+    comments?: CommentsType[];
+}
+
+export type QuestionType = {
+    id: number;
+    title: string;
+    body: string;
+    creation: number;
+    score: number;
+    user: UserType;
+    answers?: AnswerType[];
+    comments?: CommentsType[];
+}
+
+export type CommentsType = {
+    id: number;
+    body: string;
+    user: UserType;
+}
 
 /** 
  * 

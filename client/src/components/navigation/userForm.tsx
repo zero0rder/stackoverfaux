@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  createUser,
-  deleteUser,
-  UserType,
-} from "../../reducers/users/userSlice";
+import { createUser, deleteUser } from "../../reducers/users/userSlice";
 import { addToUsers, removeFromUsers } from "../../reducers/users/usersSlice";
 import {
   removeQuestions,
@@ -16,6 +12,7 @@ import useLocalStorage, { LocalStorageType } from "../../hooks/useLocalStorage";
 import UserButton from "./userButton";
 import { RootState } from "../../store";
 import { generateRandomId } from "../../utils/format";
+import { UserType } from "../../utils/types/shared";
 
 interface UserFormProps {}
 

@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store";
-import type { AnswerType } from "../reducers/questions/questionsSlice";
+import type { AnswerType } from "../utils/types/shared";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
@@ -14,11 +14,14 @@ interface UserDetailProps {}
 const UserDetail: React.FC<UserDetailProps> = ({}) => {
   const { pathname } = useLocation();
   const userId = pathname.replace("/users/", "");
+
   const user = useSelector(
-    (state: RootState) => state.users.filter((u) => u.id == parseInt(userId))[0]
+    (state: RootState) =>
+      state.users.data.filter((u) => u.id == parseInt(userId))[0]
   );
+
   const userQuestions = useSelector((state: RootState) =>
-    state.questions.filter((q) => q.user.id == parseInt(userId))
+    state.questions.data.filter((q) => q.user.id == parseInt(userId))
   );
 
   /**
@@ -27,7 +30,7 @@ const UserDetail: React.FC<UserDetailProps> = ({}) => {
    */
   const userAnswers = useSelector((state: RootState) => {
     let answers: AnswerType[] = [];
-    for (let q of state.questions) {
+    for (let q of state.questions.data) {
       if (q.answers?.length) {
         for (let query of q.answers) {
           if (query.user.id == parseInt(userId)) {

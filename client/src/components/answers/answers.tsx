@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import type { RootState } from "../../store";
-import { AnswerType, addAnswer } from "../../reducers/questions/questionsSlice";
+import { addAnswer } from "../../reducers/questions/questionsSlice";
+import { AnswerType } from "../../utils/types/shared";
 import Comments from "../comments/comments";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -17,7 +18,7 @@ interface AnswersProps {
 
 /**
  *
- *  Pass down current questions "answer" data to display, as well a parentId (question) of answer to
+ *  Pass down current "answer" data to display, as well a parentId (question) of answer to
  *  identify where newly created answers should be place upon submission
  *
  */

@@ -12,10 +12,16 @@ interface QuestionDetailProps {}
 const QuestionDetail: React.FC<QuestionDetailProps> = ({}) => {
   const { pathname } = useLocation();
   const questionId = parseInt(pathname.replace("/questions/", ""));
+  /**
+   *  Would fetch questions on-demand (cached) instead of
+   *  on app startup depending on application requirements
+   */
   const currentQuestion = useSelector(
-    (state: RootState) => state.questions.filter((v) => v.id == questionId)[0]
+    (state: RootState) =>
+      state.questions.data.filter((v) => v.id == questionId)[0]
   );
 
+  // MUI Skeleton should be here!
   if (!currentQuestion) return <div>loading</div>;
 
   return (

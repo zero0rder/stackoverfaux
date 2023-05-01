@@ -1,5 +1,5 @@
 import React from "react";
-import { UserType } from "../../reducers/users/userSlice";
+import { UserType } from "../../utils/types/shared";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";

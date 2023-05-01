@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../store";
-import {
-  CommentsType,
-  addComment,
-} from "../../reducers/questions/questionsSlice";
+import { addComment } from "../../reducers/questions/questionsSlice";
+import { CommentsType } from "../../utils/types/shared";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
@@ -20,7 +18,7 @@ interface CommentsProps {
 
 /**
  *
- *  Pass down current questions or answers "comments" data to display
+ *  Pass down current "comments" data to display
  *  also passes a questionId if a newly created comment should belong to a question object
  *  and optionally an answerId if a newly created comment should belong to an answer object
  *
