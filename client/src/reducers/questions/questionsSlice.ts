@@ -123,8 +123,8 @@ export const questionSlice = createSlice({
             return state
         },
         removeAnswers: (state, action: PayloadAction<number>) => {
-            // todo:fix removal logic
             state.data.map(q => q.answers?.filter(a => a.user.id != action.payload))
+            return state
         },
     },
     // Handle HTTP Responses

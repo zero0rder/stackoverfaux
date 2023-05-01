@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addQuestion } from "../../reducers/questions/questionsSlice";
 import type { RootState } from "../../store";
@@ -22,14 +22,17 @@ const QuestionForm: React.FC<QuestionFormProps> = ({}) => {
   const userObj = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const handleOnChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    },
+    [setFormState]
+  );
 
-  const handleOnSubmit = () => {
+  const handleOnSubmit = useCallback(() => {
     dispatch(addQuestion(formState.title, formState.body, userObj));
     setFormState({ title: "", body: "" });
-  };
+  }, [setFormState, formState]);
 
   return (
     <Box
