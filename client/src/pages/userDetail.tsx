@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store";
-import type { AnswerType } from "../utils/types/shared";
+import type { AnswerType } from "../types/shared";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";

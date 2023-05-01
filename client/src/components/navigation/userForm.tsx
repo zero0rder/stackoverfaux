@@ -11,8 +11,8 @@ import FormControl from "@mui/base/FormControl";
 import useLocalStorage, { LocalStorageType } from "../../hooks/useLocalStorage";
 import UserButton from "./userButton";
 import { RootState } from "../../store";
-import { generateRandomId } from "../../utils/format";
-import { UserType } from "../../utils/types/shared";
+import { generateRandomId } from "../../utils/math";
+import { UserType } from "../../types/shared";
 
 interface UserFormProps {}
 

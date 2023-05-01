@@ -8,31 +8,26 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 interface QuestionFormProps {}
-type FormProps = {
-  title: string;
-  body: string;
-};
 
 const QuestionForm: React.FC<QuestionFormProps> = ({}) => {
-  const [formState, setFormState] = useState<FormProps>({
-    title: "",
-    body: "",
-  });
-
+  const [formTitle, setFormTitle] = useState<string>("");
+  const [formBody, setFormBody] = useState<string>("");
   const userObj = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
-  const handleOnChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    },
-    [setFormState]
-  );
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormTitle(e.target.value);
+  };
 
-  const handleOnSubmit = useCallback(() => {
-    dispatch(addQuestion(formState.title, formState.body, userObj));
-    setFormState({ title: "", body: "" });
-  }, [setFormState, formState]);
+  const handleBodyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormBody(e.target.value);
+  };
+
+  const handleOnSubmit = () => {
+    dispatch(addQuestion(formTitle, formBody, userObj));
+    setFormTitle("");
+    setFormBody("");
+  };
 
   return (
     <Box
@@ -54,8 +49,8 @@ const QuestionForm: React.FC<QuestionFormProps> = ({}) => {
           <TextField
             name="title"
             id="question-title"
-            value={formState.title}
-            onChange={handleOnChange}
+            value={formTitle}
+            onChange={handleTitleChange}
             placeholder="title..."
             fullWidth
           />
@@ -64,8 +59,8 @@ const QuestionForm: React.FC<QuestionFormProps> = ({}) => {
           <TextField
             name="body"
             id="question-body"
-            value={formState.body}
-            onChange={handleOnChange}
+            value={formBody}
+            onChange={handleBodyChange}
             multiline
             fullWidth
             rows={4}

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import type { RootState } from "../../store";
 import { addAnswer } from "../../reducers/questions/questionsSlice";
-import { AnswerType } from "../../utils/types/shared";
+import { AnswerType } from "../../types/shared";
 import Comments from "../comments/comments";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";

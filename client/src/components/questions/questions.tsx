@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import QuestionRow from "./questionRow";
-import type { QuestionType } from "../../utils/types/shared";
+import type { QuestionType } from "../../types/shared";
 import { selectAllQuestions } from "../../reducers/questions/questionsSlice";
 import List from "@mui/material/List";
 import Grid from "@mui/material/Grid";
