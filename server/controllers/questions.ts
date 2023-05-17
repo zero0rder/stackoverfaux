@@ -1,35 +1,32 @@
-// import { /*Prisma,*/ PrismaClient } from '@prisma/client';
-import { Request, Response } from 'express';
-import {seedQuestions} from '../utils/seedQuestions'
+import { /*Prisma,*/ PrismaClient } from "@prisma/client";
+import { Request, Response } from "express";
 
-// const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
-export const getAllQuestions = async(_:Request, res:Response) => {
-    // const questions = await prisma.question.findMany()
-    res.json(seedQuestions)
-}
+export const getAllQuestions = async (_: Request, res: Response) => {
+  const questions = await prisma.question.findMany();
+  res.json(questions);
+};
 
-export const getQuestion = async() => {
-    // const { id }: { id?: string } = req.params
-    // const question = await prisma.question.findUnique({ where: { id: id } })
-    // console.log(question, id)
-    // res.json(question)
-}
+export const getQuestion = async (req: Request, res: Response) => {
+  const { id }: { id?: string } = req.params;
+  const question = await prisma.question.findUnique({
+    where: { id: id },
+    include: {
+      answers: true,
+    },
+  });
+  res.json(question);
+};
 
-export const createQuestion = async() => {
-    // const query = req.body
-    // const user = await prisma.question.create({ data: {...query} })
-    // res.json(user)
-}
+export const createQuestion = async (req: Request, res: Response) => {
+  const query = req.body;
+  const user = await prisma.question.create({ data: { ...query } });
+  res.json(user);
+};
 
-export const deleteQuestion = async() => {
-    // const { id } = req.params
-    // const user = await prisma.question.delete({ where: {id: id} })
-    // res.json(user)
-}
-
-export const getUserQuestions = async() => {
-    // const { id }: { id?: string } = req.params
-    // const questions = await prisma.question.findMany({ where: { userId: id } })
-    // res.json(questions)
-}
+export const deleteQuestion = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const user = await prisma.question.delete({ where: { id: id } });
+  res.json(user);
+};
